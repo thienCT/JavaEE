@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/xml/ns/javaee">
+<h:head>
+    <title>Danh sách Sinh viên</title>
+</h:head>
+<h:body>
+    <h1>Danh sách Sinh viên</h1>
+
+    <!-- Form để thêm sinh viên mới -->
+    <h:form>
+        <h:outputLabel for="studentId" value="Mã Sinh viên:" />
+        <h:inputText id="studentId" value="#{studentListBean.newStudent.id}" />
+
+        <h:outputLabel for="studentName" value="Tên Sinh viên:" />
+        <h:inputText id="studentName" value="#{studentListBean.newStudent.name}" />
+
+        <h:outputLabel for="studentAddress" value="Địa chỉ:" />
+        <h:inputText id="studentAddress" value="#{studentListBean.newStudent.address}" />
+
+        <h:commandButton value="Thêm Sinh viên" action="#{studentListBean.addStudent}" />
+    </h:form>
+
+    <h2>Danh sách Sinh viên:</h2>
+    <h:dataTable value="#{studentListBean.studentList}" var="student">
+        <h:column>
+            <f:facet name="header">Mã Sinh viên</f:facet>
+            #{student.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Tên Sinh viên</f:facet>
+            #{student.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Địa chỉ</f:facet>
+            #{student.address}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Thao tác</f:facet>
+            <h:commandButton value="Xóa" action="#{studentListBean.removeStudent(student.id)}" />
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
