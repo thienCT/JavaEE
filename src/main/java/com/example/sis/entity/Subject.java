@@ -1,24 +1,54 @@
 package com.example.sis.entity;
 
-    import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    @Entity
+@Entity
+
     public class Subject {
         @Id
-        private String subjectId;
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long subjectId;
 
         private String name;
-        private int credit;
+        private Integer credit;
+
+        // Default constructor
+        public Subject() {
+        }
+
+        // Constructor with parameters
+        public Subject(String name, Integer credit) {
+            this.name = name;
+            this.credit = credit;
+        }
 
         // Getters and setters
-        public String getSubjectId() { return subjectId; }
-        public void setSubjectId(String subjectId) { this.subjectId = subjectId; }
+        public Long getSubjectId() {
+            return subjectId;
+        }
 
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
+        public void setSubjectId(Long subjectId) {
+            this.subjectId = subjectId;
+        }
 
-        public int getCredit() { return credit; }
-        public void setCredit(int credit) { this.credit = credit; }
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getCredit() {
+            return credit;
+        }
+
+        public void setCredit(Integer credit) {
+            this.credit = credit;
+        }
     }
 
 

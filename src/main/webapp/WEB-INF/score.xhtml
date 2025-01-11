@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Manage Scores</title>
+</h:head>
+<h:body>
+    <h1>Manage Scores</h1>
+
+    <!-- Form to add a score for a student -->
+    <h:form>
+        <h:outputLabel for="student" value="Select Student: " />
+        <h:selectOneMenu id="student" value="#{scoreBean.selectedStudent}">
+            <f:selectItems value="#{scoreBean.students}" var="student" itemValue="#{student.id}" itemLabel="#{student.name}" />
+        </h:selectOneMenu>
+        <h:message for="student" />
+
+        <h:outputLabel for="subject" value="Select Subject: " />
+        <h:selectOneMenu id="subject" value="#{scoreBean.selectedSubject}">
+            <f:selectItems value="#{scoreBean.subjects}" var="subject" itemValue="#{subject.id}" itemLabel="#{subject.name}" />
+        </h:selectOneMenu>
+        <h:message for="subject" />
+
+        <h:outputLabel for="score1" value="Score 1: " />
+        <h:inputText id="score1" value="#{scoreBean.score.score1}" required="true" />
+        <h:message for="score1" />
+
+        <h:outputLabel for="score2" value="Score 2: " />
+        <h:inputText id="score2" value="#{scoreBean.score.score2}" required="true" />
+        <h:message for="score2" />
+
+        <h:commandButton value="Add Score" action="#{scoreBean.addScore}" />
+
+        <h:message />
+    </h:form>
+
+    <!-- List of scores -->
+    <h:form>
+        <h:outputText value="Existing Scores:" />
+        <h:dataTable value="#{scoreBean.scores}" var="score">
+            <h:column>
+                <f:facet name="header">Student Name</f:facet>
+                #{score.student.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Subject</f:facet>
+                #{score.subject.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Score 1</f:facet>
+                #{score.score1}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Score 2</f:facet>
+                #{score.score2}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Grade</f:facet>
+                #{score.grade}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:commandLink value="Delete" action="#{scoreBean.deleteScore(score.scoreId)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

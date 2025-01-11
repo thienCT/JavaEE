@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Student Information System</title>
+</h:head>
+<h:body>
+    <h1>Welcome to the Student Information System</h1>
+
+    <h:form>
+        <h:outputText value="Select an action:" />
+        <br />
+
+        <!-- Link to Add Student page -->
+        <h:commandLink value="Add Student" action="addStudent">
+            <f:ajax execute="@form" render="message" />
+        </h:commandLink>
+        <br />
+
+        <!-- Link to Add Score page -->
+        <h:commandLink value="Add Score" action="addScore">
+            <f:ajax execute="@form" render="message" />
+        </h:commandLink>
+        <br />
+
+        <!-- Link to View Students page -->
+        <h:commandLink value="View Students" action="studentList">
+            <f:ajax execute="@form" render="message" />
+        </h:commandLink>
+        <br />
+
+        <!-- Link to View Scores page -->
+        <h:commandLink value="View Scores" action="scoreList">
+            <f:ajax execute="@form" render="message" />
+        </h:commandLink>
+
+        <!-- Optional: Error message -->
+        <h:message id="message" />
+    </h:form>
+
+    <br />
+    <h2>About</h2>
+    <p>This application helps to manage student records, scores, and grades.</p>
+</h:body>
+</html>

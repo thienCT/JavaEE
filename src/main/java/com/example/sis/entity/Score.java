@@ -1,52 +1,70 @@
 package com.example.sis.entity;
 
-    import jakarta.persistence.*;
+public class Score {
 
-    @Entity
-    public class Score {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+    private Long scoreId;
+    private Long studentId;
+    private Long subjectId;
+    private Float score1;
+    private Float score2;
+    private Float grade;
 
-        @ManyToOne
-        @JoinColumn(name = "student_id")
-        private Student student;
-
-        @ManyToOne
-        @JoinColumn(name = "subject_id")
-        private Subject subject;
-
-        private float score1;
-        private float score2;
-        private char grade;
-
-
-        public char calculateGrade() {
-            float finalScore = (0.3f * score1) + (0.7f * score2);
-            if (finalScore >= 8.0) return 'A';
-            else if (finalScore >= 6.0) return 'B';
-            else if (finalScore >= 4.0) return 'D';
-            else return 'F';
-        }
-
-        // Getters and setters
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
-
-        public Student getStudent() { return student; }
-        public void setStudent(Student student) { this.student = student; }
-
-        public Subject getSubject() { return subject; }
-        public void setSubject(Subject subject) { this.subject = subject; }
-
-        public float getScore1() { return score1; }
-        public void setScore1(float score1) { this.score1 = score1; }
-
-        public float getScore2() { return score2; }
-        public void setScore2(float score2) { this.score2 = score2; }
-
-        public char getGrade() { return grade; }
-        public void setGrade(char grade) { this.grade = grade; }
+    // Constructor
+    public Score(Long scoreId, Long studentId, Long subjectId, Float score1, Float score2, Float grade) {
+        this.scoreId = scoreId;
+        this.studentId = studentId;
+        this.subjectId = subjectId;
+        this.score1 = score1;
+        this.score2 = score2;
+        this.grade = grade;
     }
 
+    // Getters and Setters
+    public Long getScoreId() {
+        return scoreId;
+    }
 
+    public void setScoreId(Long scoreId) {
+        this.scoreId = scoreId;
+    }
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
+    public Long getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Long subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public Float getScore1() {
+        return score1;
+    }
+
+    public void setScore1(Float score1) {
+        this.score1 = score1;
+    }
+
+    public Float getScore2() {
+        return score2;
+    }
+
+    public void setScore2(Float score2) {
+        this.score2 = score2;
+    }
+
+    public Float getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Float grade) {
+        this.grade = grade;
+    }
+}
