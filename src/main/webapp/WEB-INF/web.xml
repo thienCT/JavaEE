@@ -1,6 +1,0 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
-    <display-name>Student Information System</display-name>
-    <welcome-file-list>
-        <welcome-file>pages/index.xhtml</welcome-file>
-    </welcome-file-list>
-</web-app>
